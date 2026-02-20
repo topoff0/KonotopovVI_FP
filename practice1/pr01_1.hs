@@ -39,6 +39,27 @@ myTHRD :: (a, b, c) -> c
 myTHRD (x, y, z) = z
 
 
+myHead :: [a] -> a
+myHead (x:xs) = x 
+
+
+myTail :: [a] -> [a]
+myTail (x:xs) = xs
+
+
+-- Not working with negative numbers
+myTake :: Int -> [a] -> [a]
+myTake _ [] = []
+myTake 0 _ = []
+myTake n (x:xs) = x : myTake (n-1) xs
+
+
+-- Not working with negative numbers
+myDrop :: Int -> [a] -> [a]
+myDrop _ [] = []
+myDrop 0 xs = xs
+myDrop n (x:xs) = myDrop (n-1) xs
+
 myZip :: [a] -> [b] -> [(a, b)]
 myZip [] xs = []
 myZip xs [] = []
