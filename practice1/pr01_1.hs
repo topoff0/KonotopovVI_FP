@@ -47,18 +47,17 @@ myTail :: [a] -> [a]
 myTail (x:xs) = xs
 
 
--- Not working with negative numbers
 myTake :: Int -> [a] -> [a]
 myTake _ [] = []
-myTake 0 _ = []
+myTake n _ | n <= 0 = []
 myTake n (x:xs) = x : myTake (n-1) xs
 
 
--- Not working with negative numbers
 myDrop :: Int -> [a] -> [a]
 myDrop _ [] = []
-myDrop 0 xs = xs
+myDrop n xs | n <= 0 = xs
 myDrop n (x:xs) = myDrop (n-1) xs
+
 
 myZip :: [a] -> [b] -> [(a, b)]
 myZip [] xs = []
