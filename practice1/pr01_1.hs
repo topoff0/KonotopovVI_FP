@@ -82,10 +82,28 @@ myUnzip [] = ([], [])
 myUnzip ((x, y):xys) = (x:xs, y:ys)
     where (xs, ys) = myUnzip xys
 
---NOTE: myUnzip second implementation
+-- NOTE: myUnzip second implementation
 -- myUnzip :: [(a,b)] -> ([a], [b])
 -- myUnzip [] = ([], [])
 -- myUnzip xs  = (map fst xs, map snd xs)
+
+
+
+myFilter :: (a -> Bool) -> [a] -> [a]
+myFilter _ [] = []
+myFilter f (x:xs)
+    | f x = x : myFilter f xs
+    | otherwise = myFilter f xs
+
+
+-- NOTE: myFilter 'if' implementation
+-- myFilter :: (a -> Bool) -> [a] -> [a]
+-- myFilter _ [] = []
+-- myFilter f (x:xs) = 
+--     if f x
+--         then x : myFilter f xs
+--         else myFilter f xs
+
 
 myMap :: (a -> b) -> [a] -> [b]
 myMap _ [] = []
