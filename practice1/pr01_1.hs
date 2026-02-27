@@ -59,15 +59,38 @@ myDrop n xs | n <= 0 = xs
 myDrop n (x:xs) = myDrop (n-1) xs
 
 
+myProduct :: Num a => [a] -> a
+myProduct [] = 1
+myProduct (x:xs) = x * myProduct xs
+
+
 myZip :: [a] -> [b] -> [(a, b)]
 myZip [] xs = []
 myZip xs [] = []
 myZip (x:xs) (y:ys) = (x, y) : myZip xs ys
 
 
+myZip3 :: [a] -> [b] -> [c] -> [(a, b, c)]
+myZip3 [] _ _ = []
+myZip3 _ [] _ = []
+myZip3 _ _ [] = []
+myZip3 (x:xs) (y:ys) (z:zs) = (x, y, z) : myZip3 xs ys zs
+
+
+myUnzip :: [(a,b)] -> ([a], [b])
+myUnzip [] = ([], [])
+myUnzip ((x, y):xys) = (x:xs, y:ys)
+    where (xs, ys) = myUnzip xys
+
+--NOTE: myUnzip second implementation
+-- myUnzip :: [(a,b)] -> ([a], [b])
+-- myUnzip [] = ([], [])
+-- myUnzip xs  = (map fst xs, map snd xs)
+
 myMap :: (a -> b) -> [a] -> [b]
 myMap _ [] = []
 myMap f (x:xs) = f x : myMap f xs
+
 
 myZipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
 myZipWith _ [] _ = []
