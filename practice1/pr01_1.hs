@@ -132,3 +132,6 @@ myAny :: (a -> Bool) -> [a] -> Bool
 myAny _ [] = False
 myAny f (x:xs) = f x || myAny f xs
 
+myComposition :: (b -> c) -> (a -> b) -> a -> c
+myComposition f2 f1 x = f2 (f1 x)
+
