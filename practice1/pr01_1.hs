@@ -114,3 +114,11 @@ myZipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
 myZipWith _ [] _ = []
 myZipWith _ _ [] = []
 myZipWith f (x:xs) (y:ys) = f x y : myZipWith f xs ys
+
+
+myZipWith3 :: (a -> b -> c -> d) -> [a] -> [b] -> [c] -> [d]
+myZipWith3 _ [] _ _ = []
+myZipWith3 _ _ [] _ = []
+myZipWith3 _ _ _ [] = []
+myZipWith3 f (x:xs) (y:ys) (z:zs) = f x y z : myZipWith3 f xs ys zs
+
