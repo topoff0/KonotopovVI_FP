@@ -122,3 +122,13 @@ myZipWith3 _ _ [] _ = []
 myZipWith3 _ _ _ [] = []
 myZipWith3 f (x:xs) (y:ys) (z:zs) = f x y z : myZipWith3 f xs ys zs
 
+
+myAll :: (a -> Bool) -> [a] -> Bool
+myAll _ [] = True
+myAll f (x:xs) = f x && myAll f xs
+
+
+myAny :: (a -> Bool) -> [a] -> Bool
+myAny _ [] = False
+myAny f (x:xs) = f x || myAny f xs
+
