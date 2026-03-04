@@ -48,8 +48,9 @@ f 1 2
 Реализуем функцию, которая обобщить три функции реализованные выше:
 -}
 
--- myFold :: ...
--- myFold ...
+myFold :: (a -> b -> b) -> b -> [a] -> b
+myFold _ y [] = y
+myFold f y (x:xs) = f x (myFold f y xs)
 
 
 
@@ -83,8 +84,9 @@ foldr (+) 0 [1,2,3] => 1 + foldr (+) 0 [2,3]
 Реализация правой свертки:
 -}
 
--- myFoldr :: 
--- myFoldr 
+myFoldr :: (a -> b -> b) -> b -> [a] -> b
+myFoldr _ y [] = y
+myFoldr f y (x:xs) = f x (myFoldr f y xs)
 
 
 
@@ -111,8 +113,9 @@ foldl (+) 0 [1,2,3] => foldl (+) (0 + 1) [2,3]
 Реализация левой свертки:
 -}
 
--- myFoldl :: 
--- myFoldl 
+myFoldl :: (b -> a -> b) -> b -> [a] -> b
+myFoldl _ y [] = y
+myFoldl f y (x:xs) = myFoldl f (f y x) xs 
 
 
 
