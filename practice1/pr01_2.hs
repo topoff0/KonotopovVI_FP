@@ -57,3 +57,15 @@ myTakeWhile f xs = foldr (\x b -> if f x then x : b else []) [] xs
 mySpan :: (a -> Bool) -> [a] -> ([a], [a])
 mySpan f xs = foldr (\x (as,bs) -> if f x then (x:as, bs) else ([], x:as ++ bs)) ([], []) xs
 
+
+myMaybe :: b -> (a -> b) -> Maybe a -> b
+myMaybe y _ Nothing = y
+myMaybe _ f (Just x) = f x
+
+
+data MyList a = MyEmpty | MyCons a (MyList a) deriving Show
+myMap :: (a -> b) -> MyList a -> MyList b
+myMap _ MyEmpty = MyEmpty
+myMap f (MyCons x xs) = MyCons (f x) (myMap f xs)
+
+
