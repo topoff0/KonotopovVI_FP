@@ -285,18 +285,23 @@ data Maybe a = Nothing | Just a
                Nothing — отсутствие значения
                          Just a — содержит значение типа a
 Используя тип Maybe напишем реализацию map в которой может отсутствовать функция и/или список для обработки:
-myMaybeMap :: ...
-myMaybeMap ...
 -}
+myMaybeMap :: Maybe (a -> b) -> Maybe [a] -> Maybe [b]
+myMaybeMap _ Nothing = Nothing
+myMaybeMap Nothing _ = Nothing
+myMaybeMap (Just f) (Just xs) = Just (map f xs)
 
 {-
 Результаты работы чистых функций могут отсутствовать
 Например поиск значений в списке может завершится неудачей:
     find
 Реализуем функцию myFind:
-myFind :: ...
-myFind ...
 -}
+myFind :: (a -> Bool) -> [a] -> Maybe a
+myFind _ [] = Nothing
+myFind f (x:xs)
+    | f x = Just x
+    | otherwise = myFind f xs
 
 {-
 При отсутствии данных можно использовать значения по умолчанию:
