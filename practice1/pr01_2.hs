@@ -69,3 +69,13 @@ myMap _ MyEmpty = MyEmpty
 myMap f (MyCons x xs) = MyCons (f x) (myMap f xs)
 
 
+myUnFoldr :: (b -> Maybe(a,b)) -> b -> [a]
+myUnFoldr f x = ff (f x)
+    where
+        ff Nothing = []
+        ff (Just (y,z)) = y : myUnFoldr f z
+-- for testing
+unfld1 = myUnFoldr (\b -> if b == 0 then Nothing else Just (b, b-1)) 10
+unfld2 = take 10 $ myUnFoldr (\(x, y) -> Just (x, (y, x + y))) (0, 1)
+
+
