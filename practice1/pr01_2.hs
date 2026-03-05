@@ -39,3 +39,7 @@ myUnzipSave ((Nothing, Just b):xs) = let (as, bs) = myUnzipSave xs in (as, b:bs)
 myUnzipSave ((Just a, Just b):xs) = let (as, bs) = myUnzipSave xs in (a:as, b:bs)
 
 
+myReverse :: [a] -> [a]
+myReverse xs = foldl (\b x -> x : b) [] xs 
+
+
