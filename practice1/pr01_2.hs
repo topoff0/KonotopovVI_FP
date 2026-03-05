@@ -54,3 +54,6 @@ myTakeWhile :: (a -> Bool) -> [a] -> [a]
 myTakeWhile f xs = foldr (\x b -> if f x then x : b else []) [] xs
 
 
+mySpan :: (a -> Bool) -> [a] -> ([a], [a])
+mySpan f xs = foldr (\x (as,bs) -> if f x then (x:as, bs) else ([], x:as ++ bs)) ([], []) xs
+
