@@ -167,8 +167,8 @@ False
 Реализовать myPartition с использованием сверток
 -}
 
--- myPartition :: 
--- myPartition 
+myPartition :: (a -> Bool) -> [a] -> ([a], [a])
+myPartition f = foldl (\(xs, ys) x -> if f x then (x:xs, ys) else (xs, x:ys)) ([], [])
 
 
 
