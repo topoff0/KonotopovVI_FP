@@ -50,3 +50,7 @@ myFoldr1 :: (a -> a -> a) -> [a] -> a
 myFoldr1 f (x:xs) = foldr f x xs
 
 
+myTakeWhile :: (a -> Bool) -> [a] -> [a]
+myTakeWhile f xs = foldr (\x b -> if f x then x : b else []) [] xs
+
+
