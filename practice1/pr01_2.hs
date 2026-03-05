@@ -24,3 +24,18 @@ module Pr01_2 where
     -- Обработку недостатка или отсутствия ингредиентов
 
 -}
+
+myZipSave :: [a] -> [b] -> [(Maybe a, Maybe b)]
+myZipSave [] [] = []
+myZipSave (x:xs) [] = (Just x, Nothing) : myZipSave xs []
+myZipSave [] (y:ys) = (Nothing, Just y) : myZipSave [] ys
+myZipSave (x:xs) (y:ys) = (Just x, Just y) : myZipSave xs ys
+
+
+myUnzipSave :: [(Maybe a, Maybe b)] -> ([a], [b])
+myUnzipSave [] = ([], [])
+myUnzipSave ((Just a, Nothing):xs) = let (as, bs) = myUnzipSave xs in (a:as, bs)
+myUnzipSave ((Nothing, Just b):xs) = let (as, bs) = myUnzipSave xs in (as, b:bs)
+myUnzipSave ((Just a, Just b):xs) = let (as, bs) = myUnzipSave xs in (a:as, b:bs)
+
+
