@@ -79,3 +79,68 @@ unfld1 = myUnFoldr (\b -> if b == 0 then Nothing else Just (b, b-1)) 10
 unfld2 = take 10 $ myUnFoldr (\(x, y) -> Just (x, (y, x + y))) (0, 1)
 
 
+
+-- Типы описания составляющих:
+data Ingredients = Oil | Chocolate | Egg | Flour | Shugar | BakingPowder | Vanilla | Fruits deriving Show
+data Ingredient = Ingredient Ingredients Int deriving Show
+data FillingMix = OilChocolateMix | VanillaMix | FruitMix deriving Show
+data Dough = CakeDough deriving Show
+data CakeDough = ChocolateCakeDough | VanillaCakeDough | FruitCakeDough deriving Show
+data Cake = ChocolateCake | VanillaCake | FruitCake deriving Show
+data Action = Bake deriving Show
+
+-- NOTE: Стоит ли разделить функции на 3 отдельных или лучше оставить одну?
+-- Функции, которые описывают процесс приготовления частей торта
+makeCakeMix :: Ingredients -> Ingredients -> FillingMix
+makeCakeMix Oil Chocolate = OilChocolateMix
+makeCakeMix Chocolate Oil = OilChocolateMix
+makeCakeMix Oil Vanilla = VanillaMix
+makeCakeMix Vanilla Oil = VanillaMix
+makeCakeMix Oil Fruits = FruitMix
+makeCackeMix Fruits Oil = FruitMix
+
+
+cakeDough :: Ingredient -> Ingredient -> Ingredient -> Ingredient -> Maybe Dough
+cakeDough (Ingredient Egg e) (Ingredient Flour f) (Ingredient Shugar s) (Ingredient BakingPowder b)
+    | e >= 8 && f >= 400 && s >= 100 && b >= 1 = Just CakeDough
+    | otherwise = Nothing
+
+
+chocolateCakeDough :: Maybe Dough -> FillingMix -> Maybe CakeDough
+chocolateCakeDough Nothing _ = Nothing
+chocolateCakeDough (Just CakeDough) OilChocolateMix = Just ChocolateCakeDough
+
+vanillaCakeDough :: Maybe Dough -> FillingMix -> Maybe CakeDough
+vanillaCakeDough Nothing _ = Nothing
+vanillaCakeDough (Just CakeDough) VanillaMix = Just VanillaCakeDough
+
+fruitCakeDough :: Maybe Dough -> FillingMix -> Maybe CakeDough
+fruitCakeDough Nothing _ = Nothing
+fruitCakeDough (Just CakeDough) FruitMix = Just FruitCakeDough
+
+
+bakeChocolateCake :: Maybe CakeDough -> Action -> Maybe Cake
+bakeChocolateCake Nothing _ = Nothing
+bakeChocolateCake (Just ChocolateCakeDough) Bake = Just ChocolateCake
+
+bakeVanillaCake :: Maybe CakeDough -> Action -> Maybe Cake
+bakeVanillaCake (Just VanillaCakeDough) Bake = Just VanillaCake
+
+bakeFruitCake :: Maybe CakeDough -> Action -> Maybe Cake
+bakeFruitCake Nothing _ = Nothing
+bakeFruitCake (Just FruitCakeDough) Bake = Just FruitCake
+
+-- Ингредиенты
+egg = Ingredient Egg 10
+flour = Ingredient Flour 400
+sugar = Ingredient Shugar 200
+bp = Ingredient BakingPowder 1
+
+-- Промежуточные стадии приготовления торта
+myDough = cakeDough egg flour sugar bp
+notMyDough = cakeDough egg egg egg egg -- ! не работает (тип не совпадает)
+myMix = makeCakeMix Oil Fruits
+myCakeDough = fruitCakeDough myDough myMix
+
+-- Финальный торт
+myCake = bakeFruitCake myCakeDough Bake
