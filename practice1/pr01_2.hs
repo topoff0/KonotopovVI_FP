@@ -147,3 +147,11 @@ myCakeDough = fruitCakeDough myDough myMix
 
 -- Финальный торт
 myCake = bakeFruitCake myCakeDough Bake
+
+
+
+foo :: (Either String (a -> b)) -> (Either String a) -> Either String b
+foo (Left s1) (Left s2) = Left (s1 ++ s2)
+foo (Right f) (Right a) = Right (f a)
+foo (Right f) (Left s2) = Left s2
+foo (Left s1) (Right a) = Left s1
