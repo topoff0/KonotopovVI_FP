@@ -44,12 +44,13 @@ myReverse xs = foldl (\b x -> x : b) [] xs
 
 
 myFoldl1 :: (a -> a -> a) -> [a] -> a
-myFoldl1 f (x:xs) = foldl f x xs
+myFoldl1 f (x:xs) = func x xs
+    where
+        func x [] = x
+        func x (y:ys) = func (f x y) ys
 
--- myFoldr1 :: (a -> a -> a) -> [a] -> a
--- myFoldr1 f (x:xs) = foldr f x xs
 myFoldr1 :: (a -> a -> a) -> [a] -> a
-myFoldr1 f [x] = x
+myFoldr1 _ [x] = x
 myFoldr1 f (x:xs) = f x (myFoldr1 f xs)
 
 
