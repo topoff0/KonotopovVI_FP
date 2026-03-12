@@ -1,5 +1,4 @@
 module MyEvolModule where
-import GHC.Boot.TH.Syntax (Overlap(Incoherent))
 
 data MyEvolution = LUCA
                  | Cyanobacteria       
@@ -61,4 +60,85 @@ instance Eq MyEvolution where
     (==) _ _ = False
     (/=) x y = not (x == y)
 
+
+instance Ord MyEvolution where
+    compare Humans Humans = EQ
+    compare Humans _ = GT
+    compare _ Humans = LT
+
+    compare Australopithecine Australopithecine = EQ
+    compare Australopithecine _ = GT
+    compare _ Australopithecine = LT
+
+    compare Purgatorius Purgatorius = EQ
+    compare Purgatorius _ = GT
+    compare _ Purgatorius = LT
+
+    compare Morganucodon Morganucodon = EQ
+    compare Morganucodon _ = GT
+    compare _ Morganucodon = LT
+
+    compare Archaeopteryx Archaeopteryx = EQ
+    compare Archaeopteryx _ = GT
+    compare _ Archaeopteryx = LT
+
+    compare Dimetrodon Dimetrodon = EQ
+    compare Dimetrodon _ = GT
+    compare _ Dimetrodon = LT
+
+    compare Ichthyostega Ichthyostega = EQ
+    compare Ichthyostega _ = GT
+    compare _ Ichthyostega = LT
+
+    compare Trilobite Trilobite = EQ
+    compare Trilobite _ = GT
+    compare _ Trilobite = LT
+
+    compare Cyanobacteria Cyanobacteria = EQ
+    compare Cyanobacteria _ = GT
+    compare _ Cyanobacteria = LT
+
+    compare LUCA LUCA = EQ
+
+instance Enum MyEvolution where
+    toEnum 0 = LUCA
+    toEnum 1 = Cyanobacteria
+    toEnum 2 = Trilobite
+    toEnum 3 = Ichthyostega
+    toEnum 4 = Dimetrodon
+    toEnum 5 = Archaeopteryx
+    toEnum 6 = Morganucodon
+    toEnum 7 = Purgatorius
+    toEnum 8 = Australopithecine
+    toEnum 9 = Humans
+
+    fromEnum LUCA = 0
+    fromEnum Cyanobacteria = 1
+    fromEnum Trilobite = 2
+    fromEnum Ichthyostega = 3
+    fromEnum Dimetrodon = 4
+    fromEnum Archaeopteryx = 5
+    fromEnum Morganucodon = 6
+    fromEnum Purgatorius = 7
+    fromEnum Australopithecine = 8
+    fromEnum Humans = 9
+
+
+instance Bounded MyEvolution where
+    minBound = LUCA
+    maxBound = Humans
+
+
+data MyEvolution'
+    = LUCA'
+    | Cyanobacteria'
+    | Trilobite'
+    | Ichthyostega'
+    | Dimetrodon'
+    | Archaeopteryx'
+    | Morganucodon'
+    | Purgatorius'
+    | Australopithecine'
+    | Humans'
+    deriving (Show, Read, Eq, Ord, Enum, Bounded)
 

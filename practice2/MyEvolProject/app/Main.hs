@@ -1,4 +1,6 @@
 module Main (main) where
+import MyEvolModule 
+import Data.List (sort)
 
 main :: IO ()
-main = putStrLn "Hello, Haskell!"
+main = putStrLn $ show $ sort ([Humans, LUCA, Trilobite, Dimetrodon] :: [MyEvolution])
