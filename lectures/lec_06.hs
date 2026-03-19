@@ -558,8 +558,8 @@ FO.maximum (100,42)
 
 -}
 -- Определим представителя Foldable для Box
--- instance Foldable Box where
---    foldr f x (Box a) = f x a
+instance Foldable Box where
+   foldr f x (Box a) = f a x
 
 
 
