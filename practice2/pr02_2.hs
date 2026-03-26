@@ -24,6 +24,7 @@ module Pr02_2 where
 - pure, (<*>), liftA2, (*>), (<*)
 
 -- NOTE: ghci > (оформление)
+
 3. Импортируйте модули в Main.hs
 
 -}
