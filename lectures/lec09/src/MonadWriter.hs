@@ -22,7 +22,7 @@ runWriter :: Writer w a -> (a, w) -- распаковка
 instance Monoid w => Monad (Writer w) where
     return x = writer (x, mempty) -- упаковка значения и нейтрального элемента
 
-    (>>=) :: (r -> a) -> (a -> (r -> b)) -> (r -> b)
+    (>>=) :: (a, w) -> (a -> (b, w)) -> (b, w)
     m >>= k = let (x,u) = runWriter m -- извлекаем пару u - лог, x - значение
                   (y,v) = runWriter $ k x -- передаем значение в стрелку Клейсли вычисляем и извлекаем следующую пару
                 in writer (y, u `mappend` v) -- собираю пару и упаковываю
