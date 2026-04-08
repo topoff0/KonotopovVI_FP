@@ -28,7 +28,7 @@ library
       Core.Glitcher
       Core.Pure
       Core.Random
-      Lib
+      IO.File
   other-modules:
       Paths_myGlitcher
   autogen-modules:
