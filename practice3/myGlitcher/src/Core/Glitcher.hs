@@ -14,5 +14,5 @@ glitchActions =
   ]
 
 runGlitcher :: BC.ByteString -> IO BC.ByteString
-runGlitcher bytes =
-  foldM (\b f -> f b) bytes glitchActions
+runGlitcher imageFile =
+  foldM (\bytes func -> func bytes) imageFile glitchActions
