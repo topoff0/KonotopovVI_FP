@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      Config.RoomNames
       Core.Types
   other-modules:
       Paths_Labyrinth

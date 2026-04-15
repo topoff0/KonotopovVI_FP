@@ -1,4 +1,4 @@
-module Core.Types(Room, Labyrinth, Log, Visited, Search) where
+module Core.Types (Room, Labyrinth, Log, Visited, Search) where
 
 import Control.Monad.RWS
 
