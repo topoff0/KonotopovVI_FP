@@ -10,4 +10,4 @@ type Log = [String]
 
 type Visited = [Room]
 
-type Search = RWS Log Labyrinth Visited
+type Search = RWS Labyrinth Log Visited

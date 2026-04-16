@@ -28,6 +28,7 @@ library
       Config.RoomNames
       Core.Labyrinth
       Core.Types
+      Logger.Logger
   other-modules:
       Paths_Labyrinth
   autogen-modules:
