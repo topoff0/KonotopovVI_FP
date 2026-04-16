@@ -1,4 +1,4 @@
-module Logger.Logger where
+module Logger.Logger (logStart, logFinish, logDeadEnd, logMove) where
 
 import Control.Monad.RWS
 import Core.Types

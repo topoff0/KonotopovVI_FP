@@ -29,6 +29,7 @@ library
       Core.Labyrinth
       Core.Types
       Logger.Logger
+      Searcher.Search
   other-modules:
       Paths_Labyrinth
   autogen-modules:
