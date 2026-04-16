@@ -4,7 +4,7 @@ import Control.Monad.RWS
 
 type Room = String
 
-type Labyrinth = (Room, [Room])
+type Labyrinth = [(Room, [Room])]
 
 type Log = [String]
 
