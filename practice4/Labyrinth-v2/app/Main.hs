@@ -1,4 +1,9 @@
-module Main (main) where
+module Main where
+
+import Config.Config
+import IO.Console
 
 main :: IO ()
-main = return ()
+main = do
+  file <- chooseLabyrinth labyrinthFiles
+  return ()
