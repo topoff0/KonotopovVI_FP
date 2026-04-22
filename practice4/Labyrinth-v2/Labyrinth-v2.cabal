@@ -24,6 +24,8 @@ source-repository head
   location: https://github.com/githubuser/Labyrinth-v2
 
 library
+  exposed-modules:
+      Core.MyStateT
   other-modules:
       Paths_Labyrinth_v2
   autogen-modules:
