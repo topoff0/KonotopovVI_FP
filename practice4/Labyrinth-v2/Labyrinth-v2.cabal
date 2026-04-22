@@ -29,6 +29,7 @@ library
       Core.MyStateT
       Core.Types
       IO.Console
+      IO.FileLoader
       Logger.Logger
   other-modules:
       Paths_Labyrinth_v2

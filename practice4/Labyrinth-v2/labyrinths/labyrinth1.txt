@@ -1,0 +1,31 @@
+start: Mushroom Meadow | Goomba Grove | Koopa Corridor
+
+Mushroom Meadow: Question Block Alley
+Goomba Grove: Coin Cavern | Fire Flower Field
+Koopa Corridor: Fire Flower Field | Pipe Plaza | Underground Tunnel
+
+Question Block Alley: Ghost House Hall
+Coin Cavern: Fire Flower Field
+Fire Flower Field: Boo Basement
+
+Pipe Plaza: Ghost House Hall
+Underground Tunnel: Boo Basement
+
+Ghost House Hall: Yoshi Island Gate | Sky Cloud Walkway | Star Summit
+Boo Basement: Thwomp Trap Room
+
+Yoshi Island Gate: Brick Block Bazaar
+Sky Cloud Walkway: Star Summit
+Star Summit: Thwomp Trap Room
+Thwomp Trap Room: Brick Block Bazaar
+
+Brick Block Bazaar: Bowser’s Outpost HAHAHA | Ice Crystal Cavern | Warp Pipe Junction | Toad Town Square | Peach Castle Gate | Rainbow Road Rift
+
+Ice Crystal Cavern: Warp Pipe Junction
+Warp Pipe Junction: Toad Town Square
+Toad Town Square: finish
+Peach Castle Gate: Toad Town Square
+Rainbow Road Rift: Peach Castle Gate
+
+Bowser’s Outpost HAHAHA:
+finish:

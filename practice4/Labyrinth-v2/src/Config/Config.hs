@@ -8,6 +8,6 @@ finishRoom = "finish"
 
 labyrinthFiles :: [FilePath]
 labyrinthFiles =
-  [ "labyrinth1.txt",
-    "labyrinth2.txt"
+  [ "labyrinths/labyrinth1.txt"
+  -- "labyrinths/labyrinth2.txt"
   ]
