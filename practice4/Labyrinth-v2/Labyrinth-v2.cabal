@@ -27,6 +27,7 @@ library
   exposed-modules:
       Core.MyStateT
       Core.Types
+      Logger.Logger
   other-modules:
       Paths_Labyrinth_v2
   autogen-modules:
