@@ -2,8 +2,8 @@ module Core.Types
   ( Room,
     Labyrinth,
     Log,
-    Visited,
-    Search,
+    Game,
+    Command (..),
   )
 where
 
@@ -17,11 +17,16 @@ type Labyrinth = [(Room, [Room])]
 
 type Log = [String]
 
-type Visited = [Room]
+data Command
+  = Go Room
+  | Look
+  | Exit
+  | Help
+  | Unknown String
 
-type Search m a =
+type Game m a =
   MyStateT
-    Visited
+    Room
     ( WriterT
         Log
         (ReaderT Labyrinth m)

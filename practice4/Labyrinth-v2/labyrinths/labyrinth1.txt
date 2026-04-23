@@ -19,7 +19,7 @@ Sky Cloud Walkway: Star Summit
 Star Summit: Thwomp Trap Room
 Thwomp Trap Room: Brick Block Bazaar
 
-Brick Block Bazaar: Bowser’s Outpost HAHAHA | Ice Crystal Cavern | Warp Pipe Junction | Toad Town Square | Peach Castle Gate | Rainbow Road Rift
+Brick Block Bazaar: Bowser's Outpost HAHAHA | Ice Crystal Cavern | Warp Pipe Junction | Toad Town Square | Peach Castle Gate | Rainbow Road Rift
 
 Ice Crystal Cavern: Warp Pipe Junction
 Warp Pipe Junction: Toad Town Square

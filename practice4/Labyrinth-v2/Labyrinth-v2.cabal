@@ -28,6 +28,9 @@ library
       Config.Config
       Core.MyStateT
       Core.Types
+      Game.Actions
+      Game.Command
+      Game.Engine
       IO.Console
       IO.FileLoader
       Logger.Logger

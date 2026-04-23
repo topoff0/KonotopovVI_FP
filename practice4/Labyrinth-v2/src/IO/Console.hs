@@ -6,6 +6,9 @@ module IO.Console
   )
 where
 
+import Core.Types (Command (..))
+import Game.Command
+
 printNeighbors :: [String] -> IO ()
 printNeighbors rooms =
   putStrLn $ "Соседние комнаты: " ++ show rooms
@@ -18,23 +21,19 @@ printHelp = do
   putStrLn "  exit | q    — выйти из игры"
   putStrLn "  --help      — показать это сообщение\n"
 
-askCommand :: IO String
+askCommand :: IO Command
 askCommand = do
   putStrLn "Введите команду:"
   input <- getLine
-
-  case words input of
-    ["--help"] -> do
+  case parseCommand input of
+    Help -> do
       printHelp
       askCommand
-    ["look"] -> return input
-    ["exit"] -> return input
-    ["q"] -> return input
-    ["go", _] -> return input
-    _ -> do
-      putStrLn $ "Неизвестная команда '" ++ input ++ "'"
+    Unknown txt -> do
+      putStrLn $ "Неизвестная команда '" ++ txt ++ "'"
       putStrLn "Используйте --help для получения списка команд."
       askCommand
+    cmd -> return cmd
 
 printLog :: [String] -> IO ()
 printLog logs = do
@@ -51,7 +50,7 @@ chooseLabyrinth files = do
       | n > 0 && n <= length files ->
           return (files !! (n - 1))
     _ -> do
-      putStrLn "Неверный выбор, попробуйте снова."
+      putStrLn "Неверный выбор, попробуйте снова"
       chooseLabyrinth files
 
 printOption :: (Int, FilePath) -> IO ()
