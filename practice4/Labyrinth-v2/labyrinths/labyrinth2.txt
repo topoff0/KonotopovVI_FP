@@ -1,0 +1,33 @@
+start: Mushroom Gate | Pipe Entrance
+
+Mushroom Gate: Goomba Field | Coin Path
+Pipe Entrance: Underground Hub
+
+Goomba Field: Fire Plains
+Coin Path: Question Alley
+
+Underground Hub: Boo Corridor | Koopa Tunnel
+
+Fire Plains: Lava Lake
+Question Alley: Brick Street
+
+Boo Corridor: Ghost Hall
+Koopa Tunnel: Thwomp Room
+
+Lava Lake: Bowser Fort
+Brick Street: Peach Plaza
+
+Ghost Hall: Sky Bridge
+Thwomp Room: Star Peak
+
+Bowser Fort: finish
+Peach Plaza: Star Peak
+Sky Bridge: Star Bridge
+
+Star Peak: Rainbow Road
+Star Bridge: Rainbow Road
+
+Rainbow Road: finish
+
+finish:
+

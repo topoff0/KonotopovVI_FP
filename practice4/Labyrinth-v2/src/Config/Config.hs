@@ -14,6 +14,6 @@ neighborsSep = '|'
 
 labyrinthFiles :: [FilePath]
 labyrinthFiles =
-  [ "labyrinths/labyrinth1.txt"
-  -- "labyrinths/labyrinth2.txt"
+  [ "labyrinths/labyrinth1.txt",
+    "labyrinths/labyrinth2.txt"
   ]
