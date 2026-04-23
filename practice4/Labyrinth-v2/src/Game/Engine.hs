@@ -62,22 +62,42 @@ showNeighbors room = do
   neighbors <- getNeighbors room
   liftIOGame $ printNeighbors neighbors
 
+isValidMove :: Room -> [Room] -> Bool
+isValidMove = elem
+
+handleDeadEnd :: Room -> Game IO ()
+handleDeadEnd room = do
+  logDeadEnd room
+  liftIOGame $
+    putStrLn "Вы попали в тупик! Возврат в начало..."
+  setCurrent startRoom
+  logStart
+  loop
+
+moveToRoom :: Room -> Game IO ()
+moveToRoom room = do
+  setCurrent room
+  logMove room
+
+checkCurrentRoom :: Room -> Game IO ()
+checkCurrentRoom room = do
+  if room == finishRoom
+    then logFinish
+    else do
+      next <- getNeighbors room
+      if null next
+        then handleDeadEnd room
+        else loop
+
 handleMove :: Room -> Room -> Game IO ()
 handleMove current room = do
   neighbors <- getNeighbors current
 
-  if room `elem` neighbors
+  if isValidMove room neighbors
     then do
-      setCurrent room
-      logMove room
-      checkFinish room
+      moveToRoom room
+      checkCurrentRoom room
     else do
       liftIOGame $
         putStrLn "Нельзя перейти в эту комнату"
       loop
-
-checkFinish :: Room -> Game IO ()
-checkFinish room =
-  if room == finishRoom
-    then logFinish
-    else loop
