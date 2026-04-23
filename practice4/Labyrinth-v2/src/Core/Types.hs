@@ -27,8 +27,5 @@ data Command
 type Game m a =
   MyStateT
     Room
-    ( WriterT
-        Log
-        (ReaderT Labyrinth m)
-    )
+    (WriterT Log (ReaderT Labyrinth m))
     a

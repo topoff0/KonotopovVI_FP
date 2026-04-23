@@ -12,13 +12,13 @@ skipSpaces = f . f
   where
     f = reverse . dropWhile isSpace
 
-splitBySymbol :: String -> [String]
-splitBySymbol [] = []
-splitBySymbol s =
+splitNeighbors :: String -> [String]
+splitNeighbors [] = []
+splitNeighbors s =
   let (x, rest) = break (== neighborsSep) s
    in skipSpaces x : case rest of
         [] -> []
-        (_ : xs) -> splitBySymbol xs
+        (_ : xs) -> splitNeighbors xs
 
 splitOnce :: Char -> String -> (String, String)
 splitOnce _ [] = ("", "")
@@ -43,7 +43,7 @@ parseLine line =
 parseNeighbors :: String -> [Room]
 parseNeighbors [] = []
 parseNeighbors (_ : xs) =
-  filterNotEmpty (map skipSpaces (splitBySymbol xs))
+  filterNotEmpty (map skipSpaces (splitNeighbors xs))
 
 parseLabyrinth :: String -> Labyrinth
 parseLabyrinth text =
