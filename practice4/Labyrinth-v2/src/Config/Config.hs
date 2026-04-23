@@ -1,10 +1,16 @@
-module Config.Config (startRoom, finishRoom, labyrinthFiles) where
+module Config.Config (startRoom, finishRoom, labyrinthFiles, roomSep, neighborsSep) where
 
 startRoom :: String
 startRoom = "start"
 
 finishRoom :: String
 finishRoom = "finish"
+
+roomSep :: Char
+roomSep = ':'
+
+neighborsSep :: Char
+neighborsSep = '|'
 
 labyrinthFiles :: [FilePath]
 labyrinthFiles =

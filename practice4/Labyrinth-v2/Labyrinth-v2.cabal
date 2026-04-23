@@ -31,6 +31,7 @@ library
       IO.Console
       IO.FileLoader
       Logger.Logger
+      Parser.LabyrinthParser
   other-modules:
       Paths_Labyrinth_v2
   autogen-modules:
