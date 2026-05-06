@@ -6,10 +6,15 @@ where
 
 addMod :: Int -> Int -> Int -> Int
 addMod x y m
-  | m <= 0 = error "Модуль должен быть положительным"
-  | (x + y) < m && (x + y) > 0 = x + y
-  | (x + y) < 0 = addMod (x + m) y m
-  | otherwise = addMod (x - m) y m
+  | m == 0 = error "Модуль не может быть равен 0"
+  | otherwise = normalize (x + y)
+  where
+    normalize value
+      | m > 0 && value < 0 = normalize (value + m)
+      | m > 0 && value >= m = normalize (value - m)
+      | m < 0 && value > 0 = normalize (value + m)
+      | m < 0 && value <= m = normalize (value - m)
+      | otherwise = value
 
 reverseWords :: String -> String
 reverseWords text = rev text "" ""

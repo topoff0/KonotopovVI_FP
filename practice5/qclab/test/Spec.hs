@@ -20,15 +20,15 @@ main = do
 
 prop_addModMatchesMod :: Int -> Int -> Int -> Bool
 prop_addModMatchesMod x y m =
-  (addMod x y m) `mod` m == (x + y) `mod` m
+  addMod x y (makeModule m) == (x + y) `mod` (makeModule m)
 
 prop_addModNeutral :: Int -> Int -> Bool
 prop_addModNeutral x m =
-  addMod x 0 m == x `mod` m
+  addMod x 0 (makeModule m) == x `mod` (makeModule m)
 
 prop_addModCommutative :: Int -> Int -> Int -> Bool
 prop_addModCommutative x y m =
-  addMod x y m == addMod y x m
+  addMod x y (makeModule m) == addMod y x (makeModule m)
 
 prop_reverseWordsEmpty :: Bool
 prop_reverseWordsEmpty =
@@ -58,6 +58,12 @@ prop_reverseWordsTwice text1 text2 text3 =
     word2 = makeWord text2 "two"
     word3 = makeWord text3 "three"
     text = word1 ++ " " ++ word2 ++ " " ++ word3
+
+makeModule :: Int -> Int
+makeModule m =
+  if m == 0
+    then m + 2
+    else m
 
 makeWord :: String -> String -> String
 makeWord text defaultWord =
