@@ -6,7 +6,7 @@ import Test.QuickCheck
 main :: IO ()
 main = do
   putStrLn "Running QuickCheck...(addMod)"
-  quickCheck prop_addModMatchesMod
+  quickCheckWith stdArgs {maxSuccess = 150} prop_addModMatchesMod
   quickCheck prop_addModNeutral
   quickCheck prop_addModCommutative
   putStrLn "done!"
